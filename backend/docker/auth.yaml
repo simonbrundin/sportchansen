@@ -1,0 +1,39 @@
+version: "3.6"
+services:
+  auth:
+    image: nhost/hasura-auth:latest
+    depends_on:
+      - postgres
+      - hasura
+    env_file:
+      - .env
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      HASURA_GRAPHQL_GRAPHQL_URL: http://hasura:8080/v1/graphql
+      AUTH_SMTP_HOST: ${AUTH_SMTP_HOST}
+      AUTH_SMTP_PORT: ${AUTH_SMTP_PORT}
+      AUTH_SMTP_USER: ${AUTH_SMTP_USER}
+      AUTH_SMTP_PASS: ${AUTH_SMTP_PASS}
+      AUTH_SMTP_SENDER: ${AUTH_SMTP_SENDER}
+      AUTH_SMTP_SECURE: ${AUTH_SMTP_SECURE}
+      AUTH_SMTP_AUTH_METHOD: ${AUTH_SMTP_AUTH_METHOD}
+      AUTH_WEBAUTHN_ENABLED: true
+      AUTH_WEBAUTHN_RP_NAME: "Nhost App"
+    ports:
+      - "4000:4000"
+    volumes:
+      - ../auth/email-templates:/app/email-templates
+  mailhog:
+    image: mailhog/mailhog
+    environment:
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      SMTP_PASS: ${AUTH_SMTP_PASS}
+      SMTP_USER: ${AUTH_SMTP_USER}
+      SMTP_SECURE: "${AUTH_SMTP_SECURE}"
+      SMTP_SENDER: ${AUTH_SMTP_SENDER}
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
+    volumes:
+      - ../auth/mailhog:/maildir
