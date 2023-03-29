@@ -1,0 +1,47 @@
+name: Delivery Pipeline
+on: [push]
+jobs:
+  commit:
+    name: Commit Stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+      - name: Installera PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: PNPM Install
+        run: pnpm install
+
+      - name: Kör tester
+        run: pnpm test
+
+      - name: Skapa Release Candidate
+        run: pnpm generate
+
+  acceptance:
+    name: Acceptance Stage
+    needs: commit
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+  Production:
+    name: Production Stage
+    needs: acceptance
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy till GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .output/public
