@@ -16,9 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const isAuthenticated = await nhost.auth.isAuthenticatedAsync();
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .knapp {
