@@ -5,9 +5,4 @@
     </NuxtLayout>
   </div>
 </template>
-<script setup lang="ts">
-// import { NhostClient } from "@nhost/vue";
-// const nhost = new NhostClient({
-//   subdomain: "localhost",
-// });
-</script>
+<script setup lang="ts"></script>

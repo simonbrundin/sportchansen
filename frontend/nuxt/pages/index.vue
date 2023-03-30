@@ -1,5 +1,8 @@
 <template>
-  <div class="text-white flex flex-col gap-4 justify-center items-center">
+  <div
+    class="text-white flex flex-col gap-4 justify-center items-center"
+    id="index-page"
+  >
     <div>{{ nhost.auth.getUser()?.email }}</div>
     <!-- <div>{{ isAuthenticated }}</div> -->
 
@@ -11,6 +14,7 @@
         Logga ut
       </button>
     </div>
+    <div>Test</div>
     <NuxtLink to="/ingredient/1">Ingredient 1</NuxtLink>
     <NuxtLink to="/user/recipes">Mina recept</NuxtLink>
   </div>

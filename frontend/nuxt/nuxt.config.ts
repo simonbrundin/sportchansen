@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   ssr: false,
 
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxtjs/apollo"],
-  buildModules: ["@nuxt/image"],
 
   css: [
     // SCSS file in the project
