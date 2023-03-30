@@ -1,4 +1,4 @@
-PATH_TO_REPOS_FOLDER="~/repos"
+set PATH_TO_REPOS_FOLDER '~/repos'
 
 cd $PATH_TO_REPOS_FOLDER
 
