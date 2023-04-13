@@ -14,9 +14,11 @@
         Logga ut
       </button>
     </div>
-    <div>Test</div>
+    <div>
+      <b><u> Sidor:</u></b>
+    </div>
     <NuxtLink to="/ingredient/1">Ingredient 1</NuxtLink>
-    <NuxtLink to="/user/recipes">Mina recept</NuxtLink>
+    <NuxtLink to="/booked">Tiden bokad</NuxtLink>
   </div>
 </template>
 
