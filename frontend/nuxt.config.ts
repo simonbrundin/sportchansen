@@ -2,7 +2,12 @@
 export default defineNuxtConfig({
   ssr: false,
 
-  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxtjs/apollo"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@pinia/nuxt",
+    "@nuxtjs/apollo",
+    "@unocss/nuxt",
+  ],
 
   css: [
     // SCSS file in the project
