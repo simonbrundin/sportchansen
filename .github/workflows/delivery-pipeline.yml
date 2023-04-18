@@ -10,7 +10,7 @@ jobs:
 
       - name: Gå till Frontend-mapp
         run: |
-          cd Frontend
+          cd frontend
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
