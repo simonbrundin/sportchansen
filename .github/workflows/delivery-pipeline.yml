@@ -42,9 +42,6 @@ jobs:
     needs: Acceptance
     if: success()
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -53,4 +50,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
 
         with:
-          folder: ".output/public"
+          folder: frontend/.output/public
