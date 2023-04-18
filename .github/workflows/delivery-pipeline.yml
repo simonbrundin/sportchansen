@@ -27,6 +27,8 @@ jobs:
 
       - name: Skapa Release Candidate
         run: pnpm generate
+        env:
+          NUXT_APP_BASE_URL: ${NUXT_APP_BASE_URL}
 
   Acceptance:
     name: Acceptance Stage
