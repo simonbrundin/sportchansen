@@ -4,8 +4,9 @@ jobs:
   commit:
     name: Commit Stage
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./frontend
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Checkout code te
         uses: actions/checkout@v3
