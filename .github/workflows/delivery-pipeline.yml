@@ -28,11 +28,6 @@ jobs:
       - name: Skapa Release Candidate
         run: pnpm generate
 
-      - name: Deploy till GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          folder: ./frontend/.output/public
-
   Acceptance:
     name: Acceptance Stage
     needs: Commit
@@ -50,3 +45,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Deploy till GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: ./frontend/.output/public
