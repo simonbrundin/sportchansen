@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout code te
         uses: actions/checkout@v3
+        with:
+          path: /frontend
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -33,6 +35,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          path: /frontend
   Production:
     name: Production Stage
     needs: Acceptance
@@ -41,6 +45,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          path: /frontend
 
       - name: Deploy till GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
