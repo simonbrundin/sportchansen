@@ -11,13 +11,13 @@
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
-    "@nhost/nhost-js": "^2.1.2",
-    "@nhost/vue": "^1.13.18",
-    "@pinia/nuxt": "^0.4.7",
+    "@nhost/nhost-js": "^2.2.1",
+    "@nhost/vue": "^1.13.20",
+    "@pinia/nuxt": "^0.4.8",
     "@unocss/nuxt": "^0.51.4",
     "graphql": "^16.6.0",
     "p-queue": "^7.3.4",
-    "pinia": "^2.0.33",
+    "pinia": "^2.0.34",
     "throttle-debounce": "^5.0.0",
     "vue-debounce": "^4.0.0"
   },
@@ -25,10 +25,10 @@
     "@cucumber/cucumber": "^8.11.1",
     "@nuxt/image": "^0.7.1",
     "@nuxtjs/apollo": "5.0.0-alpha.6",
-    "@nuxtjs/tailwindcss": "^6.6.4",
+    "@nuxtjs/tailwindcss": "^6.6.6",
     "@storybook/vue3-vite": "7.0.0-beta.50",
-    "nuxt": "^3.3.2",
-    "sass": "^1.60.0",
+    "nuxt": "^3.4.1",
+    "sass": "^1.62.0",
     "storybook": "7.0.0-beta.50",
     "vite-plugin-eslint": "^1.8.1",
     "vitest": "^0.28.5"
