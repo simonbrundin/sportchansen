@@ -1,7 +1,7 @@
 name: Delivery Pipeline
 on: [push]
 jobs:
-  commit:
+  Commit:
     name: Commit Stage
     runs-on: ubuntu-latest
     steps:
@@ -25,9 +25,9 @@ jobs:
       - name: Skapa Release Candidate
         run: pnpm generate
 
-  acceptance:
+  Acceptance:
     name: Acceptance Stage
-    needs: commit
+    needs: Commit
     if: success()
     runs-on: ubuntu-latest
     steps:
@@ -35,14 +35,12 @@ jobs:
         uses: actions/checkout@v3
   Production:
     name: Production Stage
-    needs: acceptance
+    needs: Acceptance
     if: success()
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Deploy till GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
