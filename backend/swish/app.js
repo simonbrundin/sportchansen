@@ -1,6 +1,44 @@
 const fs = require("fs");
 const https = require("https");
 const axios = require("axios");
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
+
+const addPaymentRequestToDatabase = (paymentRequest) => {
+  const endpoint = "https://sportchansen/v1/graphql";
+const headers = {
+	"content-type": "application/json",
+    "Authorization": "<token>"
+};
+const graphqlQuery = {
+    "operationName": "fetchAuthor",
+    "query": `query fetchAuthor { author { id name } }`,
+    "variables": {}
+};
+
+const options = {
+    "method": "POST",
+    "headers": headers,
+    "body": JSON.stringify(graphqlQuery)
+};
+
+const response = await fetch(endpoint, options);
+const data = await response.json();
+
+console.log(data.data); // data
+console.log(data.errors); //
+}
+
+app.post("/swish-callback", (req, res) => {
+  const ipAdress = req.socket.remoteAddress;
+  const allowedIpAdress = "213.132.115.94:443";
+  if (ipAdress !== allowedIpAdress) {
+    res.status(403).send("Forbidden");
+    return;
+  }
+  
+});
 
 const agent = new https.Agent({
   cert: fs.readFileSync("./ssl/public.pem", { encoding: "utf8" }),
