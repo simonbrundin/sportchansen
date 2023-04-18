@@ -5,30 +5,30 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const addPaymentRequestToDatabase = (paymentRequest) => {
+const addPaymentRequestToDatabase = async (paymentRequest) => {
   const endpoint = "https://sportchansen/v1/graphql";
-const headers = {
-	"content-type": "application/json",
-    "Authorization": "<token>"
-};
-const graphqlQuery = {
-    "operationName": "fetchAuthor",
-    "query": `query fetchAuthor { author { id name } }`,
-    "variables": {}
-};
+  const headers = {
+    "content-type": "application/json",
+    Authorization: "<token>",
+  };
+  const graphqlQuery = {
+    operationName: "fetchAuthor",
+    query: `query fetchAuthor { author { id name } }`,
+    variables: {},
+  };
 
-const options = {
-    "method": "POST",
-    "headers": headers,
-    "body": JSON.stringify(graphqlQuery)
+  const options = {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(graphqlQuery),
+  };
+
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  console.log(data.data); // data
+  console.log(data.errors); //
 };
-
-const response = await fetch(endpoint, options);
-const data = await response.json();
-
-console.log(data.data); // data
-console.log(data.errors); //
-}
 
 app.post("/swish-callback", (req, res) => {
   const ipAdress = req.socket.remoteAddress;
@@ -37,7 +37,6 @@ app.post("/swish-callback", (req, res) => {
     res.status(403).send("Forbidden");
     return;
   }
-  
 });
 
 const agent = new https.Agent({
