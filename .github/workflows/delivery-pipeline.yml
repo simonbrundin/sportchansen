@@ -27,6 +27,8 @@ jobs:
 
       - name: Skapa Release Candidate
         run: pnpm generate
+        env:
+          NUXT_APP_BASE_URL: ${{ github.event.repository.name }}
 
   Acceptance:
     name: Acceptance Stage
@@ -45,6 +47,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      # - name: Installera PNPM
+      #   uses: pnpm/action-setup@v2
+      #   with:
+      #     version: 7
+
+      # - name: Deploy
+      #   run: pnpm run gh-pages-deploy
 
       - name: Deploy till GitHub Pages -
         uses: JamesIves/github-pages-deploy-action@v4.4.1
