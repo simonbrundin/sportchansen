@@ -30,6 +30,11 @@ jobs:
         env:
           NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 
+      - name: Deploy till GitHub Pages -
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: ./frontend/.output/public
+
   Acceptance:
     name: Acceptance Stage
     needs: Commit
