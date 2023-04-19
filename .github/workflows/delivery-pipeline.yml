@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release-candidate
-          path: .output/public
+          path: frontend/.output/public
 
       # - name: Deploy till GitHub Pages -
       #   uses: JamesIves/github-pages-deploy-action@v4.4.1
