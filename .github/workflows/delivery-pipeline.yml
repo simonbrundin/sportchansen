@@ -28,7 +28,7 @@ jobs:
       - name: Skapa Release Candidate
         run: pnpm generate
         env:
-          NUXT_APP_BASE_URL: /sportchansen/
+          NUXT_APP_BASE_URL: /sportchansen/frontend/
 
   Acceptance:
     name: Acceptance Stage
