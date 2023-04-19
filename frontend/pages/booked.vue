@@ -1,6 +1,6 @@
 <template>
   <div class="bg-slate-700 m-4 p-8 h-full text-white">
-    <h1 class="text-2xl">Tiden är bokad :)</h1>
+    <h1 class="text-2xl">Tiden är bokad! Nu jävlar</h1>
     <div class="text-rose-400">
       <div class="i-fluent-emoji-flat-woman-mechanic-light"></div>
 
