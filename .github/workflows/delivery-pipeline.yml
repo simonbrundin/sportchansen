@@ -30,10 +30,16 @@ jobs:
         env:
           NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 
-      - name: Deploy till GitHub Pages -
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
-          folder: ./frontend/.output/public
+          name: release-candidate
+          path: .output/public
+
+      # - name: Deploy till GitHub Pages -
+      #   uses: JamesIves/github-pages-deploy-action@v4.4.1
+      #   with:
+      #     folder: ./frontend/.output/public
 
   Acceptance:
     name: Acceptance Stage
@@ -60,8 +66,13 @@ jobs:
 
       # - name: Deploy
       #   run: pnpm run gh-pages-deploy
+      - name: Download build artifact
 
+        uses: actions/download-artifact@v2
+        with:
+          # the same name as used in the build workflow
+          name: release-candidate
       - name: Deploy till GitHub Pages -
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          folder: ./frontend/.output/public
+          folder: "release-candidate"
