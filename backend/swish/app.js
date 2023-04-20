@@ -2,8 +2,21 @@ const fs = require("fs");
 const https = require("https");
 const axios = require("axios");
 const express = require("express");
+const { log } = require("console");
 const app = express();
-const port = process.env.PORT || 3000;
+app.use(express.json());
+const port = process.env.PORT || 7343;
+
+// const pgp = require("pg-promise")(/* options */);
+// const db = pgp("postgres://username:password@host:port/postgres");
+
+// db.one("SELECT $1 AS value", 123)
+//   .then((data) => {
+//     console.log("DATA:", data.value);
+//   })
+//   .catch((error) => {
+//     console.log("ERROR:", error);
+//   });
 
 const addPaymentRequestToDatabase = async (paymentRequest) => {
   const endpoint = "https://sportchansen/v1/graphql";
@@ -31,12 +44,14 @@ const addPaymentRequestToDatabase = async (paymentRequest) => {
 };
 
 app.post("/swish-callback", (req, res) => {
-  const ipAdress = req.socket.remoteAddress;
-  const allowedIpAdress = "213.132.115.94:443";
-  if (ipAdress !== allowedIpAdress) {
-    res.status(403).send("Forbidden");
-    return;
-  }
+  console.log(req.body.status);
+  // const ipAdress = req.socket.remoteAddress;
+  // const allowedIpAdress = "213.132.115.94:443";
+  // if (ipAdress !== allowedIpAdress) {
+  //   res.status(403).send("Forbidden");
+  //   return;
+  // }
+  res.status(200).send("OK");
 });
 
 const agent = new https.Agent({
@@ -64,7 +79,7 @@ async function createPaymentRequest(amount, message) {
   const instructionUUID = generateUUID();
 
   const data = {
-    payeeAlias: "1231111111",
+    payeeAlias: "1234679304",
     currency: "SEK",
     callbackUrl: "https://your-callback-url.com",
     amount,
@@ -78,22 +93,24 @@ async function createPaymentRequest(amount, message) {
     );
 
     if (response.status === 201) {
-      console.log(response.headers);
       const { paymentrequesttoken } = response.headers;
       return { id: instructionUUID, token: paymentrequesttoken };
     }
   } catch (error) {
-    console.error(error);
+    // console.log("hmm");
+    console.error("swish", error);
   }
 }
 
-const createPaymentRequestt = async (amount, message) => {
+const createSwishLink = async (amount, message) => {
   const paymentRequest = await createPaymentRequest(amount, message);
 
-  const callbackUrl = `https://myfrontend.com/receipt?paymentRequestId=${paymentRequest.id}`;
+  const callbackUrl = `https://simonbrundin.github.io/sportchansen/booked?paymentRequestId=${paymentRequest.id}`;
   const appUrl = `swish://paymentrequest?token=${paymentRequest.token}&callbackurl=${callbackUrl}`;
-
-  // Open or redirect the user to the url
   console.log(appUrl);
+  return appUrl;
 };
-createPaymentRequestt(100, "Test Payment");
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});

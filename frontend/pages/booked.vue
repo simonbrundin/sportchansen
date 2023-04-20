@@ -1,6 +1,9 @@
 <template>
   <div class="bg-slate-700 m-4 p-8 h-full text-white">
-    <h1 class="text-2xl">Tiden är bokad!</h1>
+    <h1 v-if="isPaymentPaid(paymentRequestId as string)" class="text-2xl">
+      Tiden är bokad!
+    </h1>
+    <h1 v-else class="text-2xl">Något blev fel</h1>
     <div class="text-blue-600">
       <div class="i-fluent-emoji-flat-woman-mechanic-light"></div>
 
@@ -23,18 +26,20 @@ const bana = ref("Bana 1 VUO");
 const code = ref("1234");
 const route = useRoute();
 const paymentRequestId = route.query.paymentRequestId;
-const isPaymentPaid = async (paymentRequestId: string) => {
+const isPaymentPaid = (paymentRequestId: string) => {
   const swishEndpoint = "https://mss.cpc.getswish.net/swish-cpcapi";
-  const response = await useFetch(
+  const response = useFetch(
     `${swishEndpoint}/api/v1/paymentrequests/${paymentRequestId}`
   );
   console.log("Gör så swish requesten fungerar");
   console.log(paymentRequestId);
 
   console.log(response.data.value);
-  console.log(response.error.value?.message);
+  if (response.data.value === true) {
+    return true;
+  }
+  return false;
 };
-isPaymentPaid(paymentRequestId as string);
 </script>
 
 <style scoped></style>
