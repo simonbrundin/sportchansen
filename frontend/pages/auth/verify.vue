@@ -3,6 +3,15 @@
     <div class="login-form p-16 w-96 flex flex-col gap-4 rounded-xl">
       <div class="text-center text-white text-2xl mb-4">
         <div v-if="showRegister">Logga in</div>
+        <button
+          @click="
+            nhost.auth.sendVerificationEmail({
+              email: 'simonbrundin@gmail.com',
+            })
+          "
+        >
+          Skicka email
+        </button>
         <div v-if="!showRegister">Verifiera epostadress</div>
       </div>
 

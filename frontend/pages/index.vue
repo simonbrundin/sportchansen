@@ -18,7 +18,7 @@
       <b><u> Sidor:</u></b>
     </div>
     <NuxtLink to="/ingredient/1">Ingredient 1</NuxtLink>
-    <NuxtLink to="/booked?paymentRequestId=1234">Tiden bokad</NuxtLink>
+    <NuxtLink to="/booking/10">Bokning</NuxtLink>
   </div>
 </template>
 
