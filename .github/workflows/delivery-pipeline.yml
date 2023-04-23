@@ -31,7 +31,7 @@ jobs:
           NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: release-candidate
           path: frontend/.output/public
