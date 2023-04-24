@@ -1,4 +1,4 @@
-import{_ as f}from"./nuxt-link.bee9b419.js";import{g as p}from"./index.f7477a57.js";import{H as y,f as h,r as m,o as a,h as c,j as n,u as o,i as r,t as s,q as g,s as x,I as k}from"./entry.3217ecdb.js";async function b(u){const t=p`
+import{_ as f}from"./nuxt-link.f205c2a6.js";import{g as p}from"./index.20f5cc3e.js";import{H as y,f as h,r as m,o as a,h as c,j as n,u as o,i as r,t as s,q as g,s as x,I as k}from"./entry.08c43bce.js";async function b(u){const t=p`
     query MyQuery($id: Int!) {
       booking_by_pk(id: $id) {
         booking_time
