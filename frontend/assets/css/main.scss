@@ -1,3 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  button {
+    @apply bg-slate-700 px-4 py-4 rounded-lg text-slate-50 w-full;
+  }
+}
+
 body {
-  background: hsla(220, 22%, 10%, 1);
+  background: hsla(219, 25%, 17%, 1);
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
 }

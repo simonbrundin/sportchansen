@@ -2,9 +2,15 @@ export default async function (userId: string) {
   // QUERY och PARAMETERS ändras i varje request
   const QUERY = gql`
     query MyQuery($user_id: uuid!) {
-      recipe(where: { user_id: { _eq: $user_id } }) {
+      booking(where: { user_id: { _eq: $user_id } }) {
         id
-        title
+        start_time
+        facility {
+          name
+        }
+        duration
+        door_code
+        court_id
       }
     }
   `;

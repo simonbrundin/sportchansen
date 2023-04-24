@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/apollo",
     "@unocss/nuxt",
+    "@nuxt/image-edge",
   ],
 
   css: [
