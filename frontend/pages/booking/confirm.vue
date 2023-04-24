@@ -2,6 +2,7 @@
   <div
     class="bg-slate-700 p-8 h-full text-white flex flex-col justify-between gap-4 rounded-lg h-full"
   >
+    <div v-if="!isMobile">Öppna via mobilen</div>
     <div class="flex flex-col justify-between gap-4">
       <div class="flex flex-col text-white gap-2" v-if="booking.start_time">
         <div class="i-fluent-emoji-flat-woman-mechanic-light"></div>
@@ -41,11 +42,15 @@ const booking = ref({
 const book = async () => {
   const backendSwishServer = "http://localhost:7777";
   try {
-    const dataTwice = await $fetch(`${backendSwishServer}/book`, {
+    const swishLink = await $fetch(`${backendSwishServer}/book`, {
       method: "POST",
       body: { hello: "world " },
     });
-    console.log("User created:", dataTwice);
+
+    console.log(swishLink);
+    if (swishLink) {
+      navigateTo(swishLink, { external: true });
+    }
   } catch (error) {
     console.error(error);
   }
@@ -69,6 +74,9 @@ function formatDate(dateString: string) {
   };
   return date.toLocaleDateString("se-SE", options);
 }
+const { isMobile } = useDevice();
+
+console.log(isMobile);
 </script>
 
 <style scoped></style>

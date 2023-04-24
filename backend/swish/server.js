@@ -9,5 +9,6 @@ app.use(express.json());
 app.post("/swish-link", require("./routes/swish-link"));
 app.post("/callback", require("./routes/callback"));
 app.post("/payment-status", require("./routes/payment-status"));
+app.post("/book", require("./routes/book"));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

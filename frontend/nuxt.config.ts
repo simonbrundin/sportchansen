@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "@nuxtjs/apollo",
     "@unocss/nuxt",
     "@nuxt/image-edge",
+    "@nuxtjs/device",
   ],
 
   css: [

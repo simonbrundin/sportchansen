@@ -42,6 +42,9 @@ devDependencies:
   '@nuxtjs/apollo':
     specifier: 5.0.0-alpha.6
     version: 5.0.0-alpha.6(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(vue@3.2.47)
+  '@nuxtjs/device':
+    specifier: ^3.1.0
+    version: 3.1.0
   '@nuxtjs/tailwindcss':
     specifier: ^6.6.6
     version: 6.6.6(webpack@5.80.0)
@@ -2201,6 +2204,16 @@ packages:
       - supports-color
       - typescript
       - vue
+    dev: true
+
+  /@nuxtjs/device@3.1.0:
+    resolution: {integrity: sha512-jXWCVuPmzsGpn86GTA9/TOmfWulf9h3r2g6o5LpoZk4P1a9McMlpbDiaMPmyG5erfCj6H+XoZ6HBPCN9DtoCDA==}
+    dependencies:
+      '@nuxt/kit': 3.4.1
+      defu: 6.1.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /@nuxtjs/tailwindcss@6.6.6(webpack@5.80.0):
