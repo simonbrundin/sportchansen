@@ -27,7 +27,8 @@ export default defineNuxtConfig({
     clients: {
       default: {
         httpEndpoint:
-          process.env.GRAPHQL_URL || "http://localhost:8080/v1/graphql",
+          process.env.GRAPHQL_URL ||
+          "https://sportchansen-gql.noomi.land/v1/graphql",
       },
     },
   },
