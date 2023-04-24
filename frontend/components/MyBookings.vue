@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-4">
-    <h1>Mina bokningar</h1>
+    <h1 class="font-extrabold">Mina bokningar</h1>
     <div class="flex gap-4">
       <div
         v-for="booking in myBookings"

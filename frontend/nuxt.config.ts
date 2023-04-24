@@ -30,6 +30,9 @@ export default defineNuxtConfig({
           process.env.GRAPHQL_URL ||
           "https://sportchansen-gql.noomi.land/v1/graphql",
       },
+      swish: {
+        httpEndpoint: "https://sportchansen-swish.noomi.land/",
+      },
     },
   },
 });
