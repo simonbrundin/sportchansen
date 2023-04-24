@@ -10,6 +10,7 @@ export default async function (id: string) {
         facility {
           id
           name
+          image_url
         }
         start_time
         payment {

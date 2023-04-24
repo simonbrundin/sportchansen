@@ -75,8 +75,6 @@ function formatDate(dateString: string) {
   return date.toLocaleDateString("se-SE", options);
 }
 const { isMobile } = useDevice();
-
-console.log(isMobile);
 </script>
 
 <style scoped></style>
