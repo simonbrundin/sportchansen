@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@unocss/nuxt",
     "@nuxt/image-edge",
     "@nuxtjs/device",
+    "@unocss/nuxt",
   ],
 
   css: [
