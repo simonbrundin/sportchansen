@@ -11,16 +11,16 @@ module.exports = (query, variables) => {
       },
     });
 
-    const query = gql`
-      query MyQuery($booking_system_id: smallint = "1") {
-        booking_system_login_by_pk(booking_system_id: $booking_system_id) {
-          password
-          username
-        }
-      }
-    `;
+    // const query = gql`
+    //   query MyQuery($booking_system_id: smallint = "1") {
+    //     booking_system_login_by_pk(booking_system_id: $booking_system_id) {
+    //       password
+    //       username
+    //     }
+    //   }
+    // `;
 
-    const data = await graphQLClient.request(query);
+    const data = await graphQLClient.request(query, variables);
     const cleanDate = JSON.stringify(Object.values(data)[0], undefined, 2);
     console.log(cleanDate);
   }
