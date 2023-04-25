@@ -1,29 +1,28 @@
 const { GraphQLClient, gql } = require("graphql-request");
 const adminToken = require("./hasuraAdminToken");
 
-module.exports = (query, variables) => {
-  async function main() {
-    const endpoint = process.env.HASURA_SERVER_URL;
+module.exports = async (query, variables) => {
+  const endpoint = process.env.HASURA_SERVER_URL;
 
-    const graphQLClient = new GraphQLClient(endpoint, {
-      headers: {
-        authorization: `Bearer ${adminToken()}`,
-      },
-    });
+  const graphQLClient = new GraphQLClient(endpoint, {
+    headers: {
+      authorization: `Bearer ${adminToken()}`,
+    },
+  });
 
-    // const query = gql`
-    //   query MyQuery($booking_system_id: smallint = "1") {
-    //     booking_system_login_by_pk(booking_system_id: $booking_system_id) {
-    //       password
-    //       username
-    //     }
-    //   }
-    // `;
-
+  // const query = gql`
+  //   query MyQuery($booking_system_id: smallint = "1") {
+  //     booking_system_login_by_pk(booking_system_id: $booking_system_id) {
+  //       password
+  //       username
+  //     }
+  //   }
+  // `;
+  try {
     const data = await graphQLClient.request(query, variables);
-    const cleanDate = JSON.stringify(Object.values(data)[0], undefined, 2);
-    console.log(cleanDate);
+    const cleanData = JSON.stringify(Object.values(data)[0], undefined, 2);
+    return cleanData;
+  } catch (error) {
+    console.error(error);
   }
-
-  main().catch((error) => console.error(error));
 };

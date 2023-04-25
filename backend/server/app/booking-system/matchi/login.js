@@ -1,10 +1,10 @@
 const queryHasura = require("../../services/queryHasura");
 const { gql } = require("graphql-request");
 
-module.exports = () => {
+module.exports = async () => {
   // todo: Hämta Matchi användarnamn och lösenord
 
-  const data = queryHasura(
+  const data = await queryHasura(
     gql`
       query MyQuery($booking_system_id: smallint!) {
         booking_system_login_by_pk(booking_system_id: $booking_system_id) {
