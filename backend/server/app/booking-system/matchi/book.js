@@ -11,6 +11,22 @@ module.exports = async (bookingData) => {
       bookingData.facility.facility_id,
       bookingData.user_id
     );
+    const response = await fetch(
+      "https://www.matchi.se/j_spring_security_check",
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "application/x-www-form-urlencoded; charset=utf-8",
+          Connection: "close",
+          Host: "www.matchi.se",
+        },
+        credentials: "include",
+        redirect: "manual",
+      }
+    );
+    console.log(priceToPay);
   } catch (error) {
     throw error;
   }
