@@ -1,5 +1,5 @@
 //
-const bookTime = (bookingData) => {
+const bookTime = async (bookingData) => {
   // Validate data
   const bookingSystem = bookingData.facility?.booking_system;
   if (bookingSystem === undefined) {
@@ -13,10 +13,14 @@ const bookTime = (bookingData) => {
   if (startTime === undefined) {
     throw new Error("Start time not found");
   }
+  try {
+    // Book time in right booking system
+    const bookTimeInBookingSystem = require(`../booking-system/${bookingSystem}/book`);
 
-  // Book time in right booking system
-  const bookTimeInBookingSystem = require(`../booking-system/${bookingSystem}/book`);
-  bookTimeInBookingSystem(bookingData);
+    await bookTimeInBookingSystem(bookingData);
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = bookTime;

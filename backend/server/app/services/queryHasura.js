@@ -20,8 +20,9 @@ module.exports = async (query, variables) => {
   // `;
   try {
     const data = await graphQLClient.request(query, variables);
-    const cleanData = JSON.stringify(Object.values(data)[0], undefined, 2);
-    return cleanData;
+    // const cleanData = Object.values(data)[0];
+    // return cleanData
+    return data;
   } catch (error) {
     console.error(error);
   }

@@ -11,7 +11,7 @@ const postBook = async (req, res, next) => {
     await bookTime(data);
     // other service call (or same service, different function can go here)
     // i.e. - await generateBlogpostPreview()
-    res.sendStatus(201);
+    res.status(200).send("Tiden bokad");
     next();
   } catch (error) {
     res.status(500).send(error.message);
