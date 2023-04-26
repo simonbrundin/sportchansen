@@ -1,17 +1,18 @@
 const login = require("./login");
-module.exports = async (slotId) => {
+module.exports = async (data) => {
+  const { slotID } = data.bookingSystemData;
   // Validera korrekt Slot ID
-  if (!slotId) {
+  if (!slotID) {
     throw new Error("Missing Slot ID");
   }
-  if (slotId.length !== 32) {
+  if (slotID.length !== 32) {
     throw new Error("Invalid Slot ID");
   }
 
   const cookies = await login();
 
   const response = await fetch(
-    `https://www.matchi.se/bookingPayment/updateConfirmModalModel?slotIds=${slotId}&firstSlotIds=${slotId}`,
+    `https://www.matchi.se/bookingPayment/updateConfirmModalModel?slotIds=${slotID}&firstSlotIds=${slotID}`,
     {
       headers: {
         Cookie: cookies,
