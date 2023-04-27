@@ -1,9 +1,9 @@
-/*
- * call other imported services, or same service but different functions here if you need to
- */
+const createSwishLink = require("../services/swish/createSwishLink");
 const postCallback = async (req, res, next) => {
   try {
-    res.sendStatus(201);
+    const swishLink = await createSwishLink(123, 1234);
+
+    res.status(200).send(swishLink);
     next();
   } catch (error) {
     console.log(error.message);

@@ -4,8 +4,6 @@ export default async function (id: string) {
     query MyQuery($id: Int!) {
       booking_by_pk(id: $id) {
         booking_time
-        court_id
-        door_code
         duration
         facility {
           id

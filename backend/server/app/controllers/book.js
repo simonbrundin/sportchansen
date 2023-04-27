@@ -13,7 +13,7 @@ const postBook = async (req, res, next) => {
     const { prices, fees } = await getBookingEconomy(req.body);
     const bookingID = await saveBookingData(req.body, userID, prices, fees);
     console.log(bookingID);
-    const swishLink = await createSwishLink(prices.userPrice, bookingID);
+    // const swishLink = await createSwishLink(prices.userPrice, bookingID);
     // await bookTime(data);
     // other service call (or same service, different function can go here)
     // i.e. - await generateBlogpostPreview()

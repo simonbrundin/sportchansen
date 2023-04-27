@@ -9,8 +9,6 @@ export default async function (userId: string) {
           name
         }
         duration
-        door_code
-        court_id
       }
     }
   `;
