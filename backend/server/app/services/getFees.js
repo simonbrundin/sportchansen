@@ -8,19 +8,31 @@ module.exports = async (data) => {
           facility_id
           percent
         }
-        fee_by_pk(id: "1") {
-          subsidy_percent
-          subsidy_fixed
-          id
-          card_fee
-          booking_percent
+        fee(order_by: { date: asc }, limit: 1) {
           booking_fixed
+          booking_percent
+          card_fee
+          subsidy_fixed
+          subsidy_percent
         }
       }
     `,
     { facility_id: data.facilityID }
   );
   const dealPercentage = res.deal_by_pk.percent;
-  const { card_fee, booking_percent, booking_fixed } = res.fee_by_pk;
-  return { dealPercentage, card_fee, booking_percent, booking_fixed };
+  const {
+    card_fee,
+    booking_percent,
+    booking_fixed,
+    subsidy_percent,
+    subsidy_fixed,
+  } = res.fee[0];
+  return {
+    dealPercentage,
+    card_fee,
+    booking_percent,
+    booking_fixed,
+    subsidy_percent,
+    subsidy_fixed,
+  };
 };

@@ -8,12 +8,13 @@ module.exports = async (req) => {
     algorithm: "HS256",
   };
 
-  jwt.verify(token, JWT_SECRET, options, (error, decoded) => {
+  const userID = jwt.verify(token, JWT_SECRET, options, (error, decoded) => {
     if (error) {
       console.log(error);
       throw new Error(error.message);
     }
-    const userID = decoded["https://hasura.io/jwt/claims"]["x-hasura-user-id"];
-    return userID;
+
+    return decoded["https://hasura.io/jwt/claims"]["x-hasura-user-id"];
   });
+  return userID;
 };
