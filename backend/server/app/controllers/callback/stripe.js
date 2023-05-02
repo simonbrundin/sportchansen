@@ -2,6 +2,8 @@ const bookTime = require("../../services/bookTime");
 const getBooking = require("../../services/getBooking");
 module.exports = async (req, res, next) => {
   try {
+    // todo Validera att det är stripe som requesten kommer ifrån
+
     const bookingID = req.body.bookingID;
     const booking = await getBooking(bookingID);
     await bookTime(booking);
