@@ -1,4 +1,3 @@
-const axios = require("axios");
 const generateUUID = require("./generateUUID");
 const swishClient = require("./swishClient");
 

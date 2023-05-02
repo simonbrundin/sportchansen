@@ -11,9 +11,11 @@ const postBook = async (req, res, next) => {
   try {
     const userID = await validateJWT(req);
     const { prices, fees } = await getBookingEconomy(req.body);
+    console.log(prices, fees);
+    300;
     const bookingID = await saveBookingData(req.body, userID, prices, fees);
     console.log(bookingID);
-    // const swishLink = await createSwishLink(prices.userPrice, bookingID);
+    const swishLink = await createSwishLink(prices.userPrice, bookingID);
     // await bookTime(data);
     // other service call (or same service, different function can go here)
     // i.e. - await generateBlogpostPreview()

@@ -1,37 +1,30 @@
-const queryHasura = require("../../services/queryHasura");
-const { gql } = require("graphql-request");
-const price = require("./price");
-const finalPrice = require("../../services/finalPrice");
-module.exports = async (bookingData) => {
-  try {
-    const { slotID } = bookingData.booking_system_data;
-    const startingPrice = await price(slotID);
-    const priceToPay = await finalPrice(
-      startingPrice,
-      bookingData.facility.facility_id,
-      bookingData.user_id
-    );
-    const response = await fetch(
-      "https://www.matchi.se/j_spring_security_check",
-      {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "User-Agent": "application/x-www-form-urlencoded; charset=utf-8",
-          Connection: "close",
-          Host: "www.matchi.se",
-        },
-        credentials: "include",
-        redirect: "manual",
-      }
-    );
-    console.log(priceToPay);
-  } catch (error) {
-    throw error;
+const login = require("./login");
+require("dotenv/config");
+
+module.exports = async (data) => {
+  const { slotID } = data.bookingSystemData;
+  const { facilityID } = data.bookingSystemData;
+  // Validera korrekt Slot ID
+  if (!slotID) {
+    throw new Error("Missing Slot ID");
+  }
+  if (slotID.length !== 32) {
+    throw new Error("Invalid Slot ID");
   }
 
-  // // TODO: Logga in och få cookie
-  // login();
-  // // TODO: Boka tiden
+  const cookies = await login();
+  const url = `https://www.matchi.se/bookingPayment/payEntryPoint?slotIds=${slotID}&facilityId=${facilityID}&method=GIFT_CARD&customerCouponId=17111`;
+  console.log(url);
+  const response = await fetch(url, {
+    headers: {
+      Cookie: cookies,
+    },
+    credentials: "include",
+  });
+
+  console.log(response.headers.get("location"));
+  return response.headers.get("Location");
 };
+
+// matchi.ingress=1682449277.609.454.161594|3fa8edba434f2ee898239e3e876bcab4; Path=/; HttpOnly; JSESSIONID=04660109DED6E22F26512D7C5FC3A6BE; Path=/; Secure; SameSite=None
+// matchi.ingress=1682449826.145.222.278322|3fa8edba434f2ee898239e3e876bcab4; Path=/; HttpOnly; JSESSIONID=EA945B4DCDB9666365377BEE2DE41D95; Path=/; Secure; SameSite=None
