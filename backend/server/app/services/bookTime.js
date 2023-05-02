@@ -1,7 +1,7 @@
 //
 const bookTime = async (bookingData) => {
   // Validate data
-  const bookingSystem = bookingData.facility?.booking_system;
+  const bookingSystem = bookingData.facility?.booking_system.name;
   if (bookingSystem === undefined) {
     throw new Error("Booking system not found");
   }

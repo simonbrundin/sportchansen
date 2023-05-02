@@ -6,11 +6,13 @@ module.exports = async (bookingID) => {
       query MyQuery($id: Int!) {
         booking_by_pk(id: $id) {
           id
+          user_id
           duration
           facility {
             booking_system {
               name
             }
+            booking_system_facility_id
           }
           start_time
           booking_extra {

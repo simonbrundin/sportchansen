@@ -1,9 +1,10 @@
 const login = require("./login");
 require("dotenv/config");
 
-module.exports = async (data) => {
-  const { slotID } = data.bookingSystemData;
-  const { facilityID } = data.bookingSystemData;
+module.exports = async (bookingData) => {
+  const { slotID } = bookingData.booking_extra.booking_system_slot_id;
+  const { facilityID } = bookingData.facility.booking_system_facility_id;
+  const couponID = 17111;
   // Validera korrekt Slot ID
   if (!slotID) {
     throw new Error("Missing Slot ID");
@@ -13,7 +14,7 @@ module.exports = async (data) => {
   }
 
   const cookies = await login();
-  const url = `https://www.matchi.se/bookingPayment/payEntryPoint?slotIds=${slotID}&facilityId=${facilityID}&method=GIFT_CARD&customerCouponId=17111`;
+  const url = `https://www.matchi.se/bookingPayment/payEntryPoint?slotIds=${slotID}&facilityId=${facilityID}&method=GIFT_CARD&customerCouponId=${couponID}`;
   console.log(url);
   const response = await fetch(url, {
     headers: {
