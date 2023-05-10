@@ -42,14 +42,15 @@ const booking = ref({
 const book = async () => {
   const backendSwishServer = "http://localhost:7777";
   try {
-    const swishLink = await $fetch(`${backendSwishServer}/book`, {
+    const stripeClientSecret = await $fetch(`${backendSwishServer}/book`, {
       method: "POST",
       body: { hello: "world " },
     });
 
-    console.log(swishLink);
-    if (swishLink) {
-      navigateTo(swishLink, { external: true });
+    console.log(stripeClientSecret);
+
+    if (stripeClientSecret) {
+      navigateTo(stripeClientSecret, { external: true });
     }
   } catch (error) {
     console.error(error);

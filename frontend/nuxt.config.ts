@@ -24,6 +24,7 @@ export default defineNuxtConfig({
   pinia: {
     autoImports: ["defineStore", "acceptHMRUpdate"],
   },
+  plugins: [{ src: "~/plugins/vue-stripe.js", ssr: false }],
 
   apollo: {
     clients: {

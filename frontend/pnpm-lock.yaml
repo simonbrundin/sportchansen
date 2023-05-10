@@ -13,6 +13,9 @@ dependencies:
   '@pinia/nuxt':
     specifier: ^0.4.8
     version: 0.4.8(typescript@5.0.4)(vue@3.2.47)
+  '@vue-stripe/vue-stripe':
+    specifier: ^4.5.0
+    version: 4.5.0
   graphql:
     specifier: ^16.6.0
     version: 16.6.0
@@ -2863,6 +2866,10 @@ packages:
       - supports-color
     dev: true
 
+  /@stripe/stripe-js@1.52.1:
+    resolution: {integrity: sha512-fza40OPSpGQlFxc5TZWiYC/6Lk89Sep1fLuv9ss33YS6lCAF8UZbfA1E6W+lwO4c7WRKZIZumHIEbPJfP/O9uw==}
+    dev: false
+
   /@teppeis/multimaps@2.0.0:
     resolution: {integrity: sha512-TL1adzq1HdxUf9WYduLcQ/DNGYiz71U31QRgbnr0Ef1cPyOUOsBojxHVWpFeOSUucB6Lrs0LxFRA14ntgtkc9w==}
     engines: {node: '>=10.17'}
@@ -3426,6 +3433,13 @@ packages:
       loupe: 2.3.6
       pretty-format: 27.5.1
     dev: true
+
+  /@vue-stripe/vue-stripe@4.5.0:
+    resolution: {integrity: sha512-BU449XT5zegjNQirl+SSztbzGIvPjhxlHv8ybomSZcI1jB6qEpLgpk2eHMFDKnOGZZRhqtg4C5FiErwSJ/yuRw==}
+    dependencies:
+      '@stripe/stripe-js': 1.52.1
+      vue-coerce-props: 1.0.0
+    dev: false
 
   /@vue/apollo-composable@4.0.0-beta.4(@apollo/client@3.7.12)(graphql@16.6.0)(typescript@5.0.4)(vue@3.2.47):
     resolution: {integrity: sha512-lErWL+9LGfWfdfrSYY3DQB/A8Asqs46MiKwmgKeKSj7fe01tx0UpH43aiwMGj+VgEzBZ9AfqEa/Bxf0Nff/NNw==}
@@ -10894,6 +10908,10 @@ packages:
     dependencies:
       ufo: 1.1.1
     dev: true
+
+  /vue-coerce-props@1.0.0:
+    resolution: {integrity: sha512-4fdRMXO6FHzmE7H4soAph6QmPg3sL/RiGdd+axuxuU07f02LNMns0jMM88fmt1bvSbN+2Wyd8raho6p6nXUzag==}
+    dev: false
 
   /vue-debounce@4.0.0(vue@3.2.47):
     resolution: {integrity: sha512-+BrcKfLpyDpUJ58ZrAvI35irRCgYHFpnF3NJZwwaz8/kkKmEq6TWPXBIhLh2HQAsUZNwo52K/vQyiEFsJ/1RYA==}
