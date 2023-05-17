@@ -1,5 +1,5 @@
 const getBookingEconomy = require("../services/getBookingEconomy");
-const createSwishLink = require("../services/swish/createSwishLink");
+// const createSwishLink = require("../services/swish/createSwishLink");
 const validateJWT = require("../services/validateJWT");
 const saveBookingData = require("../services/saveBookingData");
 const createStripePaymentIntent = require("../services/stripe/createStripePaymentIntent");

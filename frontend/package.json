@@ -15,7 +15,6 @@
     "@nhost/vue": "^1.13.20",
     "@nuxt/image-edge": "1.0.0-28020728.5df24eb",
     "@pinia/nuxt": "^0.4.8",
-    "@vue-stripe/vue-stripe": "^4.5.0",
     "graphql": "^16.6.0",
     "p-queue": "^7.3.4",
     "pinia": "^2.0.34",
